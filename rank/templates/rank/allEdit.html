@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <style>
+            * {
+                font-family: "Nanum Gothic", "Helvetica", "Sans Serif";
+            } table tr td {
+                border: 1px solid #000000;
+                font-size: 15pt;
+            } input {
+                font-size: 15pt;
+            } #submit {
+                font-size: 15pt;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>수정하기</h1>
+        <strong>주의: </strong>수정한 뒤 수정완료 버튼을 눌러 주셔야 합니다.
+        {% for Aform in forms %}
+        <form action="/redit/{{Aform.id}}/" method="post">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td rowspan="4">{{Aform.name}}</td>
+                </tr>
+                    {% for field in Aform.form.visible_fields %}
+                    <tr>
+                    <td>
+                    <table>
+                    <tr>
+                        <td>{{field.label_tag}}</td>
+                        <td>
+                            {{field.errors}}
+                            {{field}}
+                            {{field.help_text}}
+                        </td>
+                    </tr>
+                    </table>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td colspan="4"><input type="submit" id="submit" value="수정 완료 ({{Aform.name}})"></td>
+                </tr>
+            </table>
+        </form>
+        {% endfor %}
+    </body>
+</html>

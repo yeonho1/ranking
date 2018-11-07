@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <style>
+            * {
+                font-family: "Nanum Gothic", "Malgun Gothic", "Sans Serif", "Helvetica";
+            }
+            table tr td {
+                border: 1px solid #000000;
+                text-align: center;
+                font-size: 15pt;
+            } #delete {
+                font-size: 15pt;
+                background-color: #fa0000;
+                color: #ffffff;
+                width: 100%;
+            } #add {
+                font-size: 15pt;
+                background-color: #00fa00;
+                color: #ffffff;
+                width: 100%;
+            } #edit {
+                font-size: 15pt;
+                background-color: #fafa00;
+                width:100%;
+            } form {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>순위</h1>
+        <table>
+            <tr>
+                <td>순위</td>
+                <td>이름</td>
+                <td>비고</td>
+            </tr>
+            {% if ranking.all %}
+            {% for ranker in ranking %}
+            <tr>
+                <td>{{ranker.rank}}</td>
+                <td>{{ranker.name}}</td>
+                <td>{{ranker.additions}}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="3">정보없음</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td colspan="3">
+                    <form action="{% url 'delete' %}"><input type="submit" value="삭제" id="delete"></form>
+                    <strong>주의: </strong> 삭제나 수정으로 변경된 사항은 되돌릴 수 없습니다.
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <form action="{% url 'add' %}"><input type="submit" value="추가" id="add"></form>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <form action="{% url 'editall' %}"><input type="submit" value="수정" id="edit"></form>
+                    <strong>주의: </strong> 삭제나 수정으로 변경된 사항은 되돌릴 수 없습니다.
+                </td>
+            </tr>
+    </body>
+</html>

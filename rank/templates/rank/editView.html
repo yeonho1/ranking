@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <style>
+            * {
+                font-family: "Nanum Gothic", "Malgun Gothic", "Helvetica";
+            }
+            table tr td {
+                border: 1px solid #000000;
+                font-size: 15pt;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>순위</td>
+                <td>이름</td>
+                <td>비고</td>
+            </tr>
+        {% for ranker in ranking %}
+        <tr>
+            <td>{{ranker.rank}}</td>
+            <td><a href="{% url 'edit' id=ranker.id %}">{{ranker.name}}</a></td>
+            <td>{{ranker.additions}}</td>
+        </tr>
+        {% endfor %}
+    </body>
+</html>

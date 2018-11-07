@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <style>
+            * {
+                font-family: "Nanum Gothic", "Helvetica", "Sans Serif";
+            }
+        </style>
+    </head>
+    <body>
+        <h1>수정하기</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_table}}
+            <input type="submit" value="수정 완료">
+        </form>
+    </body>
+</html>
