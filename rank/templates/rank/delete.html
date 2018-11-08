@@ -24,7 +24,7 @@
             </tr>
             {% for ranker in rankers %}
             <tr>
-                <form action="/delete/{{ranker.id}}" method='get'>
+                <form action="{% url 'deleteid' id=ranker.id %}" method='get'>
                     <td>{{ranker.rank}}</td>
                     <td>{{ranker.name}}</td>
                     <td>{{ranker.additions}}</td>

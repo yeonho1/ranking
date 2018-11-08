@@ -25,7 +25,7 @@ SECRET_KEY = 'kzw=^_-_h8u6i2*zk&f!ra7f8*pv!*0e=jw1k7t&nh95rw!j)2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,8 +76,17 @@ WSGI_APPLICATION = 'ranking.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ranking',
+        'USER': 'ranking',
+        'PASSWORD': 'ranking1234',
+        'HOST': '',
+        'PORT': '',
+        'OPTIONS': {
+            'init_command': 'SET storage_engine=INNODB' \
+            ', character_set_connection=utf8' \
+            ', collation_connection=utf8_general_ci'
+        }
     }
 }
 

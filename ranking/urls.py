@@ -32,6 +32,6 @@ urlpatterns = [
     url(r'^editall/$', editAllRanking, name='editall'),
     url(r'^redit/(?P<id>[0-9])/$', rEdit, name='redit'),
     url(r'^add/$', addRanker, name='add'),
-    url(r'^delete/(?P<id>[0-9])/$', delete),
+    url(r'^delete/(?P<id>[0-9])/$', delete, name='deleteid'),
     url(r'^delete/$', deleteView, name='delete')
 ]

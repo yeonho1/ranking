@@ -18,7 +18,7 @@
         <h1>수정하기</h1>
         <strong>주의: </strong>수정한 뒤 수정완료 버튼을 눌러 주셔야 합니다.
         {% for Aform in forms %}
-        <form action="/redit/{{Aform.id}}/" method="post">
+        <form action="{% url 'redit' id=Aform.id %}" method="post">
             {% csrf_token %}
             <table>
                 <tr>
@@ -47,5 +47,8 @@
             </table>
         </form>
         {% endfor %}
+        <form action="{% url 'main' %}">
+            <input type="submit" value="돌아가기 (메인으로)">
+        </form>
     </body>
 </html>
